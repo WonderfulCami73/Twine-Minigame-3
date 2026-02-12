@@ -1,2 +1,3 @@
 # Twine Minigame 3
-Twine Minigame 3 for CISG 110.
+## Devlog
+Write your Devlog here.
