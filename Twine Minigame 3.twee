@@ -1,0 +1,210 @@
+:: StoryTitle
+Twine Minigame 3
+
+
+:: StoryData
+{
+  "ifid": "E8C7A710-5858-4C50-B80A-54E73BF6EE24",
+  "format": "SugarCube",
+  "format-version": "2.37.3",
+  "start": "start",
+  "zoom": 1
+}
+
+
+:: StoryInit {"position":"775,725","size":"100,100"}
+/* Runs once at the start */
+<<set $key to false>>
+<<set $shrink to false>>
+
+/* Variables initialized */
+
+
+:: Untitled Passage {"position":"900,225","size":"100,100"}
+
+
+
+:: Untitled Passage 2 {"position":"900,725","size":"100,100"}
+
+
+
+:: cheshire {"position":"575,300","size":"100,100"}
+
+[img[https://i.pinimg.com/736x/b0/9f/7b/b09f7bd110f29b2d3e9fff883c847701.jpg]]
+A grin appears first, then the rest of the Cheshire Cat melts into view.
+
+“Well hello,” he purrs. “Looking for the maze, aren’t we?”
+
+He swirls around you.
+“The middle path is usually safest. Except when it isn’t.”
+
+Then he fades away entirely.
+
+[[Enter the Maze->maze]]
+[[Back to Start->start]]
+
+
+:: door {"position":"700,300","size":"100,100"}
+
+[img[https://i.pinimg.com/1200x/10/17/de/1017de6cc0c5c5b5372421d41a44668a.jpg]]
+<<if $key == false>>
+The keyhole glints.  
+//You need a key.//
+[[Go back->start]]
+<</if>>
+
+<<if $key == true and $shrink == false>>
+You try to fit through…  
+but you're still much too big.
+[[Find a way to shrink->start]]
+<</if>>
+
+<<if $key == true and $shrink == true>>
+You turn the key.  
+The door glows and opens like it’s been waiting for you.
+
+[[Step Into Wonderland->ending]]
+<</if>>
+
+
+:: ending {"position":"562.5,550","size":"100,100"}
+[img[https://i.pinimg.com/736x/c9/5d/91/c95d91b3a36e11636ad9f9c22cd389c2.jpg]]
+
+Colors swirl around you, colorful mushrooms, and a castle not too far from you..
+
+The //Cheshire Cat// appears upside-down.
+
+“Well done,” he says. “Most visitors end up lost or even worse...
+You, however… did just fine.”
+
+**THE END**
+
+
+:: maze {"position":"800,425","size":"100,100"}
+
+Choose a path:
+
+* [[Left Path->maze_left]]
+* [[Middle Path->maze_middle]]
+* [[Right Path->maze_right]]
+
+
+:: maze_left {"position":"675,550","size":"100,100"}
+Dead end.  
+A sign reads: *“Nice try, but no.”*
+
+[[Back to Maze->maze]]
+
+
+:: maze_middle {"position":"800,550","size":"100,100"}
+[img[https://i.pinimg.com/1200x/0d/99/27/0d992751133b6b6deec26dff83a0aa57.jpg]]
+This path feels right.  
+You swear you hear the //Cheshire Cat// chuckle somewhere above you.
+
+[[Proceed to the Golden Door->door]]
+
+
+:: maze_right {"position":"925,550","size":"100,100"}
+You hear whispers surrounding you.
+Definitely not the correct path.
+
+[[Back to Maze->maze]]
+
+
+:: mushroom {"position":"300,300","size":"100,100"}
+[img[https://i.pinimg.com/736x/d6/24/7d/d6247d78e238d23616587b2956e0d8af.jpg]]
+
+You walk down the grove. It smells like smoke! The ''Caterpillar'' sits on a giant mushroom, blowing perfect smoke rings.
+He sighs dramatically.  
+"Are you lost? I suppose I can help… if you eat one of these mushrooms. One is helpful. One… isn’t."
+/*player chooses multiple options*/
+Choose carefully:
+
+* [[Left Mushroom->wrongmush]]
+* [[Right Mushroom->rightmush]]
+* [[Back to Start->start]]
+
+
+:: rightmush {"position":"312.5,425","size":"100,100"}
+
+[img[https://i.pinimg.com/736x/7b/41/f6/7b41f69e0a4bbf32ef36e628d82615f5.jpg]]
+
+<<set $shrink to true>>
+
+You nibble the right mushroom and shrink.
+
+The Caterpillar nods.  
+"Finally, off you go."
+
+[[Return to the Hallway->start]]
+
+
+:: start {"position":"500,175","size":"100,100"}
+[img[https://i.pinimg.com/736x/9b/43/6e/9b436e8ce3e8b3f6506a4b9aafc4f625.jpg]]
+
+You tumble down the rabbit hole and land in a long hallway full of bright, colorful doors.  
+A tiny golden door sparkles at the end, almost calling to you.
+
+What will you do?
+
+* [[Visit the Mushroom Grove->mushroom]]
+* [[Join the Mad Tea Party->tea]]
+* [[Follow the Floating Grin->cheshire]]
+
+/* This is the main hallway. Variables are NOT reset here. */
+
+
+:: tea {"position":"437.5,300","size":"100,100"}
+[img[https://i.pinimg.com/736x/10/25/7c/10257c6172aca4b3bd99b2d606795240.jpg]]
+
+The table is a mess of teacups and crumbs.  
+The ''Mad Hatter'' gasps, “A GUEST!”  
+The ''March Hare'' drops a handful of spoons.
+
+Something shiny hides under a rattling teapot…
+
+What do you do?
+
+* [[Drink the Strange Tea->tea_drink]]
+* [[Talk to the Dormouse->tea_mouse]]
+* [[Lift the Teapot->tea_key]]
+* [[Leave the Tea Party->start]]
+
+
+:: tea_drink {"position":"437.5,425","size":"100,100"}
+The tea tastes like peppermint with a hint of lemon.
+
+“Marvelous!” the //Hatter// shouts.  
+“Do come again. Or don’t. Either way is splendid!”
+
+[[Return to Tea Party->tea]]
+
+
+:: tea_key {"position":"700,425","size":"100,100"}
+<<set $key to true>>
+You lift the loudest, most rattly teapot and wow!
+A small golden key sits underneath.
+
+The //Hatter// winks.
+
+[[Return to the Hallway->start]]
+
+
+:: tea_mouse {"position":"562.5,425","size":"100,100"}
+The //Dormouse// blinks at you. He yawns.
+
+“Keys… always hiding… under something noisy…”  
+He immediately falls asleep.
+
+[[Return to Tea Party->tea]]
+
+
+:: wrongmush {"position":"187.5,425","size":"100,100"}
+[img[https://i.pinimg.com/736x/7b/41/f6/7b41f69e0a4bbf32ef36e628d82615f5.jpg]]
+
+You nibble the left mushroom and WHOOSH! You become taller!
+
+The ''Caterpillar'' smirks.  
+"Too tall. Try again."
+
+[[Return to the Caterpillar->mushroom]]
